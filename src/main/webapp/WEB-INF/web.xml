@@ -14,12 +14,13 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/myservlet</url-pattern>
+        <url-pattern>/myservlet/*</url-pattern>
     </servlet-mapping>
     
     <!-- Welcome File -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
+        <!-- You can add additional welcome files here -->
     </welcome-file-list>
     
 </web-app>
