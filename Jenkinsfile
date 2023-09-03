@@ -26,7 +26,6 @@ stages{
            sh 'mvn clean package'
               }
             }
-       stage('Deploy to Prod Server') 
          }
       }
    }
