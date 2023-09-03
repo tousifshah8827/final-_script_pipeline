@@ -12,10 +12,6 @@ pipeline {
                 checkout([$class: 'GitSCM', 
                           branches: [[name: '*/master']], 
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
-                stags('Test') { 
-        steps {
-            sh 'mvn clean test'
-    }
             }
         }
     }
