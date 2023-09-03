@@ -8,12 +8,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo "tousif4"
                 checkout([$class: 'GitSCM', 
                           branches: [[name: '*/master']], 
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
-stages{'Compile with Maven'} {
+                echo "tousif1"
+stages{'Compile with Maven'} { 
+    echo "tousif2"
                     steps {
-                         sh 'clean compile'
+                        echo "tousif3"
+                         sh 'mvn clean compile'
                     }
                 }
             }
