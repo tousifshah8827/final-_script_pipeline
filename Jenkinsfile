@@ -12,14 +12,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Execute your build commands here (e.g., for a Java project with Maven)
-                sh 'mvn clean install'
+                sh 'clean install'
             }
         }
         
         stage('Test') {
             steps {
                 // Run tests if applicable
-                sh 'mvn test compile package'
+                sh 'test compile package'
             }
         }
         
