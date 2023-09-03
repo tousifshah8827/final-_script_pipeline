@@ -1,4 +1,4 @@
-any {
+node{
     // Define the GitHub repository URL and your credentials
     def gitRepoUrl = 'https://github.com/tousifshah8827/kkkkk.git'
     //def gitCredentialsId = 'tousifshah8827'
