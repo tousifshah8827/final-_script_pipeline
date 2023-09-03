@@ -1,25 +1,34 @@
-node {
-    def mvnHome
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-        // Get the Maven tool.
-        // ** NOTE: This 'M3' Maven tool must be configured
-        // **       in the global configuration.
-        mvnHome = tool 'M3'
-    }
-    stage('Build') {
-        // Run the maven build
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
-            } else {
-                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from your version control system (e.g., Git)
+                git 'https://github.com/tousifshah8827/kkkkk.git'
             }
         }
-    }
-    stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts 'target/*.jar'
+        
+        stage('Build') {
+            steps {
+                // Execute your build commands here (e.g., for a Java project with Maven)
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests if applicable
+                sh 'mvn test compile package'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy your application to a staging or production environment
+                // (e.g., deploy to a web server, container, or cloud platform)
+                sh 'your_deploy_script.sh'
+            }
+        }
     }
 }
