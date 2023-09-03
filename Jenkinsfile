@@ -13,13 +13,17 @@ pipeline {
                           branches: [[name: '*/master']], 
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
                 echo "############tousif1######"
-stages {'Build'} { 
-    echo "###############tousif2#############"
-                    steps {
-                        echo "##############tousif3###################"
-                         sh 'mvn clean compile'
-                    }
-                }
+{
+    stage('Build') {
+        //
+    }
+    stage('Test') {
+        //
+    }
+    stage('Deploy') {
+        //
+    }
+}
             }
         }
     }
