@@ -13,7 +13,7 @@ pipeline {
                           branches: [[name: '*/master']], 
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
                 echo "############tousif1######"
-stages{'build'} { 
+stages{'Build'} { 
     echo "###############tousif2#############"
                     steps {
                         echo "##############tousif3###################"
