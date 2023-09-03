@@ -29,7 +29,7 @@ stages{
        stage('Deploy to Prod Server') {
        steps{
            script{
-           sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat_Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/tomcat/webapps/addressbook.war', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/addressbook.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+           sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat_Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/tomcat/webapps/tousif-1.0-SNAPSHOT.war', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/tousif-1.0-SNAPSHOT.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
            }
          }
       }
