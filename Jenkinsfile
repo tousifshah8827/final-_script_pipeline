@@ -1,34 +1,25 @@
-pipeline {
-    agent any
+node {
+    // Define the GitHub repository URL and your credentials
+    def gitRepoUrl = 'https://github.com/tousifshah8827/kkkkk.git'
+   
+  
+    def mavenTool = 'M3'  // The name of the Maven tool configured in Jenkins
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your source code from your version control system (e.g., Git)
-                git 'https://github.com/tousifshah8827/kkkkk.git'
-            }
-        }
+    stage('Checkout') {
+       
+        checkout([$class: 'GitSCM', 
+                  branches: [[name: '*/master']], 
+                  userRemoteConfigs: [[url: gitRepoUrl]]])
+    }
+
+    stage('Build with Maven') {
+        // Set up the Maven tool
+        def mvnHome = tool name: mavenTool, type: 'hudson.tasks.Maven$MavenInstallation'
+
         
-        stage('Build') {
-            steps {
-                // Execute your build commands here (e.g., for a Java project with Maven)
-                sh 'test'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                // Run tests if applicable
-                sh 'test compile package'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                // Deploy your application to a staging or production environment
-                // (e.g., deploy to a web server, container, or cloud platform)
-                sh 'Tomcat9_Server'
-            }
-        }
+            sh "${mvnHome}/bin/mvn clean install"
+        }*/
+        sh "${mvnHome} clean install"
+		
     }
 }
