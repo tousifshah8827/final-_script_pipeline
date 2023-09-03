@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Execute your build commands here (e.g., for a Java project with Maven)
-                sh 'clean install'
+                sh 'test'
             }
         }
         
