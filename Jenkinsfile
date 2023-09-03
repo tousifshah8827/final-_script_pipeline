@@ -16,9 +16,6 @@ node {
         // Set up the Maven tool
         def mvnHome = tool name: mavenTool, type: 'hudson.tasks.Maven$MavenInstallation'
 
-        
-            sh "${mvnHome}/bin/mvn clean install"
-        }*/
         sh "${mvnHome} clean install"
 		
     }
