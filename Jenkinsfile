@@ -13,7 +13,7 @@ pipeline {
                           branches: [[name: '*/master']], 
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
                 echo "############tousif1######"
-stages{'Compile with Maven'} { 
+stages{'Compile with M3'} { 
     echo "###############tousif2#############"
                     steps {
                         echo "##############tousif3###################"
