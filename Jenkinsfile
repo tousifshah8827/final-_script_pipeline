@@ -9,7 +9,7 @@ node {
        
         checkout([$class: 'GitSCM', 
                   branches: [[name: '*/master']], 
-                  userRemoteConfigs: [[url: gitRepoUrl]]])
+                  userRemoteConfigs: [[url: tousifshah8827l]]])
     }
 
     stage('Build with Maven') {
