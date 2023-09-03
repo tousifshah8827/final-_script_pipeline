@@ -1,22 +1,18 @@
-node {
-    // Define the GitHub repository URL and your credentials
-    def gitRepoUrl = 'https://github.com/tousifshah8827/kkkkk.git'
-   
-  
-    def mavenTool = 'M3'  // The name of the Maven tool configured in Jenkins
-
-    stage('Checkout') {
-       
-        checkout([$class: 'GitSCM', 
-                  branches: [[name: '*/master']], 
-                  userRemoteConfigs: [[url: tousifshah8827l]]])
+pipeline {
+    agent any
+    
+    environment {
+        GIT_REPO_URL = 'https://github.com/tousifshah8827/kkkkk.git'
+        MAVEN_TOOL = 'M3'
     }
-
-    stage('Build with Maven') {
-        // Set up the Maven tool
-        def mvnHome = tool name: mavenTool, type: 'hudson.tasks.Maven$MavenInstallation'
-
-        sh "${mvnHome} clean install"
-		
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', 
+                          branches: [[name: '*/master']], 
+                          userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
+            }
+        }
     }
 }
