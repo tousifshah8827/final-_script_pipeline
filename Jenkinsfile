@@ -13,7 +13,7 @@ pipeline {
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
                 stages{'Compile with Maven'} {
                     step{
-                         sh 'mvn clean compile'
+                         sh 'clean compile'
                     }
                 }
             }
