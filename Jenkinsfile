@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Deploy your application to a staging or production environment
                 // (e.g., deploy to a web server, container, or cloud platform)
-                sh 'your_deploy_script.sh'
+                sh 'Tomcat9_Server'
             }
         }
     }
