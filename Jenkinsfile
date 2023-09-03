@@ -9,13 +9,13 @@ node{
     // Define the Maven installation name
     def mavenTool = 'M3'  // The name of the Maven tool configured in Jenkins
 
-    stage('Checkout') 
+    stage('Checkout') {
         // Clone the GitHub repository
         checkout([$class: 'GitSCM', 
                   branches: [[name: '*/master']], 
                   userRemoteConfigs: [[https://github.com/tousifshah8827/kkkkk.git]]])
                   //, credentialsId: tousifshah8827
-    
+  }
 
     stage('Build with Maven') {
         // Set up the Maven tool
@@ -30,4 +30,4 @@ node{
 		//Above mvnHome should be defined in the tools section. 
 		//
     }
-
+}
