@@ -1,50 +1,45 @@
 pipeline {
     agent any
     
-    environment {
-        GIT_REPO_URL = 'https://github.com/tousifshah8827/kkkkk.git'
-        MAVEN_TOOL = 'M3'
-    }
-    
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', 
-                          branches: [[name: '*/master']], 
-                          userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
+                // Checkout your source code from your version control system (e.g., Git)
+                checkout scm 'https://github.com/tousifshah8827/kkkkk.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Compile your code (e.g., for a Java project)
+                sh 'mvn clean compile'
             }
         }
         
         stage('Test') {
             steps {
-                // Run tests, such as JUnit tests
-                sh 'test'
-            }
-        }
-        
-        stage('Compile') {
-            steps {
-                // Compile your Java source code (if necessary)
-                sh 'compile'
+                // Run tests (e.g., using JUnit)
+                sh 'mvn test'
             }
         }
         
         stage('Package') {
             steps {
                 // Package your application (e.g., create a JAR or WAR file)
-                sh 'package'
+                sh 'mvn package'
             }
         }
+    }
     
     post {
         success {
-            // This block is executed if the pipeline succeeds
-            echo 'Build successful!'
+            // You can perform actions if the pipeline succeeds
+            echo 'Build successful! Deploying...'
+            // Add deployment steps here
         }
-        
         failure {
-            // This block is executed if the pipeline fails
-            echo 'Build failed!'
+            // You can perform actions if the pipeline fails
+            echo 'Build failed! Not deploying.'
         }
     }
 }
