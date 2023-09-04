@@ -14,13 +14,14 @@ pipeline {
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
             }
         }
- tools {
-    maven 'M3'
-  }
-  stages {
-   stage('init') {
-      checkout scm
-   }
+ stage('init'){
+      //init sample
+    }
+    stage('build'){
+        withMaven(maven: 'mvn') {
+            sh "mvn clean package"
+        }
+    }
         stage('Build') {
             steps {
                 // Compile your code (e.g., for a Java project)
