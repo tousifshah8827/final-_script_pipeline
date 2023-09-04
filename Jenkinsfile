@@ -14,13 +14,6 @@ pipeline {
                           userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
             }
         }
-    
-stage('Build') {
-            steps {
-                // Build your Java project using Maven
-                sh 'mvn clean install'
-            }
-        }
         
         stage('Test') {
             steps {
