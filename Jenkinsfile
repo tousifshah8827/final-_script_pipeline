@@ -1,14 +1,19 @@
 pipeline {
     agent any
     
+    environment {
+        GIT_REPO_URL = 'https://github.com/tousifshah8827/kkkkk.git'
+        MAVEN_TOOL = 'M3'
+    }
+    
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your source code from your version control system (e.g., Git)
-                checkout scm 'https://github.com/tousifshah8827/kkkkk.git'
+                checkout([$class: 'GitSCM', 
+                          branches: [[name: '*/master']], 
+                          userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
             }
         }
-        
         stage('Build') {
             steps {
                 // Compile your code (e.g., for a Java project)
