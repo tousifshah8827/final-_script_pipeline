@@ -35,7 +35,7 @@ pipeline {
                 sh 'package'
             }
         }
-    }
+    
     post {
         success {
             // This block is executed if the pipeline succeeds
