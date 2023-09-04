@@ -18,21 +18,21 @@ pipeline {
         stage('Test') {
             steps {
                 // Run tests, such as JUnit tests
-                sh 'mvn test'
+                sh 'test'
             }
         }
         
         stage('Compile') {
             steps {
                 // Compile your Java source code (if necessary)
-                sh 'mvn compile'
+                sh 'compile'
             }
         }
         
         stage('Package') {
             steps {
                 // Package your application (e.g., create a JAR or WAR file)
-                sh 'mvn package'
+                sh 'package'
             }
         }
     }
