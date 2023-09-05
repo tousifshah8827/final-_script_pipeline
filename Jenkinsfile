@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-    
+    agent {
+      label 'slave'
+      }
     environment {
         GIT_REPO_URL = 'https://github.com/tousifshah8827/kkkkk.git'
         MAVEN_TOOL = 'M3'
